@@ -1,6 +1,8 @@
+import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay'
+import Loader from './Loader'
 
 class App extends React.Component {
   // not required by React
@@ -32,15 +34,19 @@ class App extends React.Component {
 
   // }
 
-  // Required by React
-  render() {
+  renderContent() {
     if (this.state.errMessage && !this.state.lat) {
       return <div>Error: {this.state.errMessage}</div>
     } else if (!this.state.errMessage && this.state.lat) {
       return <SeasonDisplay lat={this.state.lat}/>
     } else {
-      return <div>Loading...</div>
+      return <Loader message="Waiting for user to allow or block fetching location"/>
     }
+  }
+
+  // Required by React
+  render() {
+    return <div className="red border">{this.renderContent()}</div>
   }
 }
 
