@@ -1,23 +1,21 @@
 import React from 'react'
+import './VideoItem.css'
 
-const VideoItem = ({
-  video: {
+const VideoItem = ({ onVideoSelect, video }) => {
+  const {
     snippet: {
       title,
-      description,
       thumbnails: { medium: { url } }
     }
-  }
-}) => {
+  } = video
+
   return (
-    <div className="ui divided items">
-      <div className="item">
-        <div className="ui tiny image">
-          <img src={url} alt={title}/>
-        </div>
-        <div className="middle aligned content">
-          {description}
-        </div>
+    <div onClick={() => onVideoSelect(video)} className="item video-item">
+      <div className="ui tiny image">
+        <img src={url} alt={title}/>
+      </div>
+      <div className="middle aligned content">
+        <div className="header">{title}</div>
       </div>
     </div>
   )
