@@ -1,13 +1,14 @@
 import React from 'react'
 
 const VideoItem = ({
-  snippet: {
-    title,
-    description,
-    thumbnail: { medium: { url } }
+  video: {
+    snippet: {
+      title,
+      description,
+      thumbnails: { medium: { url } }
+    }
   }
 }) => {
-
   return (
     <div className="ui divided items">
       <div className="item">
