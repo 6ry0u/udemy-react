@@ -1,5 +1,4 @@
 import React from 'react'
-import { selectSong } from '../actions'
 import SongsList from './SongsList'
 import SongDetail from './SongDetail'
 
