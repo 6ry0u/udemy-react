@@ -23,17 +23,21 @@ class GoogleAuth extends Component {
 
   renderAuthButton() {
     if (this.state.isSignedIn === null ) {
-      return null
+      return (
+        <button className="ui red google button loading"></button>
+      )
     } else if (this.state.isSignedIn) {
       return (
         <button className="ui red google button">
-          <i className="google icon">Sign Out</i>
+          <i className="google icon" />
+          Sign Out
         </button>
       )
     } else {
       return (
         <button className="ui red google button">
-          <i className="google icon">Sign In With Google</i>
+          <i className="google icon" />
+          Sign In With Google
         </button>
       )
     }
