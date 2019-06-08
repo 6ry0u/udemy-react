@@ -39,4 +39,5 @@ class StreamEdit extends Component {
 const mapStateToProps = (state, ownProps) => {
   return { stream: state.streams[ownProps.match.params.id] }
 }
+
 export default connect(mapStateToProps, { fetchStream, editStream })(StreamEdit)
