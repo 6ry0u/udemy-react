@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay'
 import Loader from './Loader'
 
 import './index.css'
+import useLocation from './useLocation'
 
 const App = () => {
-  const [lat, setLat] = useState(null)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(
-      position => setLat(position.coords.latitude),
-      err => setError(err.message)
-    )
-  }, [])
+  const { lat, error } = useLocation()
 
   const renderContent = () => {
     if (error && !lat) {
