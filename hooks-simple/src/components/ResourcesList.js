@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Item, Container } from 'semantic-ui-react'
-import axios from 'axios'
+
+import useResources from './useResources'
 
 const ResourcesList = ({ resource }) => {
-  const [resources, setResources] = useState([])
-
-  // useEffect doesn't support promises. Resources fetching
-  // function must be defined ouside or invoked immediately
-  const fetchResources = async (resource) => {
-    const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`)
-    setResources(response.data)
-  }
-
-  useEffect(() => {
-    fetchResources(resource)
-  }, [resource])
-
+  const resources = useResources(resource)
   return (
     <Container>
       <Item.Group divided>
