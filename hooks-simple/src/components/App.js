@@ -2,25 +2,33 @@ import React, { useState } from 'react'
 import { Button, Container, Segment } from 'semantic-ui-react'
 
 import ResourcesList from './ResourcesList'
+import UsersList from './UsersList'
 
 const App = () => {
   const [resource, setResource] = useState('posts')
   return (
     <Container>
       <Segment textAlign='center'>
-        <h1>Show Todos or Posts</h1>
+        <h1>Show:</h1>
         <Button
           onClick={() => setResource('posts')}
         >
-      Posts
+        Posts
         </Button>
         <Button
           onClick={() => setResource('todos')}
         >
-      Todos
+        Todos
+        </Button>
+        <Button
+          onClick={() => setResource('users')}
+        >
+        Users
         </Button>
       </Segment>
-      <ResourcesList resource={resource} />
+      {resource === 'users'
+        ? <UsersList resource={resource} />
+        : <ResourcesList resource={resource} />}
     </Container>
   )
 }
